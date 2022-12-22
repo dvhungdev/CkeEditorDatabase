@@ -2,8 +2,8 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import React, { Suspense, useEffect, useState } from 'react';
 import './App.css';
 import Convert1Page from './pages/Convert1Page';
-import Convert2Page from './pages/Convert2Page';
-import Convert3Page from './pages/Convert3Page';
+// import Convert2Page from './pages/Convert2Page';
+// import Convert3Page from './pages/Convert3Page';
 
 const TYPE_CONVERT = {
   FULL_TEXT: 0,
@@ -28,8 +28,8 @@ function App() {
             <Redirect exact from="/" to="/convert1" />
 
             <Route path="/convert1" component={Convert1Page} />
-            <Route path="/convert2" component={Convert2Page} />
-            <Route path="/convert3" component={Convert3Page} />
+            {/* <Route path="/convert2" component={Convert2Page} /> */}
+            {/* <Route path="/convert3" component={Convert3Page} /> */}
           </Switch>
         </BrowserRouter>
       </Suspense>

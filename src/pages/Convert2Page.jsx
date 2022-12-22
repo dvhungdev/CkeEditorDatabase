@@ -34,7 +34,6 @@ function Convert2Page() {
     const dataConvertRef = useRef();
     function ConvertText(data) {
         data = convertHelper.convertSpecificData(data);
-        debugger;
         var dom = $(`<div>` + data + `</div>`);
 
         $(dom)
