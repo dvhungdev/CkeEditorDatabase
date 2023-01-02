@@ -111,7 +111,6 @@ function Convert1Page() {
 
     return (
         <div className='app'>
-            <h3>Convert1Page của Vui</h3>
             <div className='app-container'>
                 <div className='item'>
                     <CKEditor

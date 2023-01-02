@@ -68,13 +68,13 @@ function Convert3Page() {
         }
 
         if (result == '') {
-            result = '-----------------SAI---------------------';
+            result =
+                '-----------------SAI Kiểm tra lại đầu vào---------------------';
         }
         return result;
     }
 
     function handleSortTrueList() {
-        debugger;
         let result = '';
         var dom = jQuery(`<div>${data}</div>`);
         var dapAn = valueDapAn;
@@ -158,34 +158,9 @@ function Convert3Page() {
 
     return (
         <div className='app'>
-            <h3>Convert3Page của Vui</h3>
             <div className='app-container'>
                 <div className='item'>
-                    <div style={{ display: 'flex' }}>
-                        <div>
-                            <button
-                                className='btn-type'
-                                onClick={() => {
-                                    let dataNew = window.editor.getData();
-                                    dataNew = replaceDataCommon(dataNew);
-                                    dataNew =
-                                        convertRaw.KeoThaDapAn.ConvertRaw(
-                                            dataNew
-                                        );
-                                    window.editor.setData(dataNew);
-                                }}
-                            >
-                                Loại <strong>(1)</strong> in
-                            </button>
-                            <a
-                                href={convertRaw.KeoThaDapAn.Image}
-                                target='_bank'
-                            >
-                                show
-                            </a>
-                        </div>
-                    </div>
-
+                    <p>Bảng</p>
                     <CKEditor
                         onBeforeLoad={(CKEDITOR) => {
                             CKEDITOR.plugins.add('customCommand', {
@@ -236,6 +211,7 @@ function Convert3Page() {
                             enterMode: 2,
                         }}
                     />
+                    <p>Đáp án</p>
                     <textarea
                         className='text'
                         value={valueDapAn}
@@ -280,12 +256,13 @@ function Convert3Page() {
                         </button>
                     </div>
                     <textarea className='text' value={dataConvert}></textarea>
-                    HTML
+                    <div>{}</div>
+                    {/* HTML
                     <textarea
                         className='text'
                         value={data}
                         ref={dataConvertRef}
-                    ></textarea>
+                    ></textarea> */}
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@ const TYPE_COLOR = {
     BLUE: 1,
 };
 
-function Convert2Page() {
+function Editor1Page() {
     const [data, setData] = useState('');
     const [dataConvert, setDataConvert] = useState('');
 
@@ -62,7 +62,7 @@ function Convert2Page() {
 
         //Blue
         let domBlues = $(dom).find(
-            `[style="color:#4472c4"],[style="color:#0070c0"]`
+            `[style="color:#4472c4"],[style="color:#0070c0"],[style="color:#0000ff"]`
         );
         $(domBlues).removeAttr('style');
         $(domBlues).each(function (index) {
@@ -117,7 +117,7 @@ function Convert2Page() {
         <div className='app'>
             <div className='app-container'>
                 <div className='item'>
-                    <div style={{ display: 'flex' }}>
+                    <div style={{ display: 'flex', marginBottom: 8 }}>
                         <div>
                             <button
                                 className='btn-type'
@@ -169,124 +169,6 @@ function Convert2Page() {
                                 show
                             </a>
                         </div>
-                        <div>
-                            <button
-                                className='btn-type'
-                                onClick={() => {
-                                    let dataNew = window.editor.getData();
-                                    dataNew =
-                                        convertHelper.convertSpecificData(
-                                            dataNew
-                                        );
-                                    dataNew =
-                                        convertRaw.RawLoaiTable.ConvertRaw(
-                                            dataNew
-                                        );
-                                    window.editor.setData(dataNew);
-                                }}
-                            >
-                                Loại Table
-                            </button>
-                            <a
-                                href={convertRaw.DapAnABCLoai2.Image}
-                                target='_bank'
-                            >
-                                show
-                            </a>
-                        </div>
-                        <div>
-                            <button
-                                className='btn-type'
-                                onClick={() => {
-                                    let dataNew = window.editor.getData();
-                                    dataNew =
-                                        convertHelper.convertSpecificData(
-                                            dataNew
-                                        );
-                                    dataNew =
-                                        convertRaw.RawLoaiTable2.ConvertRaw(
-                                            dataNew
-                                        );
-                                    window.editor.setData(dataNew);
-                                }}
-                            >
-                                Loại Table 2
-                            </button>
-                            <a
-                                href={convertRaw.DapAnABCLoai2.Image}
-                                target='_bank'
-                            >
-                                show
-                            </a>
-                        </div>
-                        {/* <div>
-                            <button
-                                className='btn-type'
-                                onClick={() => {
-                                    let dataNew = window.editor.getData();
-                                    
-                                    window.editor.setData(dataNew);
-                                }}
-                            >
-                                trim
-                            </button>
-                            <a href={convertRaw.DapAnABCLoai2.Image} target='_bank'>
-                                show
-                            </a>
-                        </div> */}
-                    </div>
-
-                    <div style={{ display: 'flex' }}>
-                        <div>
-                            <button
-                                className='btn-type'
-                                onClick={() => {
-                                    let dataNew = window.editor.getData();
-                                    dataNew =
-                                        convertHelper.convertSpecificData(
-                                            dataNew
-                                        );
-                                    dataNew =
-                                        convertRaw.RawLoaiTable.ConvertRaw(
-                                            dataNew
-                                        );
-                                    window.editor.setData(dataNew);
-                                }}
-                            >
-                                Tách đáp án (A, B, C)
-                            </button>
-                            <a
-                                href={convertRaw.DapAnABCLoai2.Image}
-                                target='_bank'
-                            >
-                                show
-                            </a>
-                        </div>
-                        {/* <div>
-                            <button
-                                className='btn-type'
-                                onClick={() => {
-                                    let dataNew = window.editor.getData();
-                                    dataNew =
-                                        convertHelper.convertSpecificData(
-                                            dataNew
-                                        );
-                                    dataNew =
-                                        convertRaw.RawLoai123Span.ConvertRaw(
-                                            dataNew
-                                        );
-                                    window.editor.setData(dataNew);
-                                }}
-                            >
-                                Tách đáp án (1, 2, 3) (span)
-                            </button>
-                            <a
-                                href={convertRaw.DapAnABCLoai2.Image}
-                                target='_bank'
-                            >
-                                show
-                            </a>
-                        </div> */}
                     </div>
 
                     <CKEditor
@@ -351,24 +233,23 @@ function Convert2Page() {
                         }}
                         config={{
                             language: 'vi',
-                            toolbarGroups: [
-                                {
-                                    name: 'document',
-                                    groups: ['mode', 'document', 'doctools'],
-                                },
-                                { name: 'insert', groups: ['insert'] },
-                                {
-                                    name: 'basicstyles',
-                                    groups: ['basicstyles', 'cleanup'],
-                                },
-                                { name: 'colors', groups: ['colors'] },
+                            toolbar: [
+                                [
+                                    'Source',
+                                    'Bold',
+                                    'Italic',
+                                    'TextColor',
+                                    'RedColor',
+                                    'Table',
+                                    'document',
+                                ],
                             ],
                             extraPlugins:
                                 'justify,font,colorbutton,forms,image2,customCommand',
                             removeButtons:
                                 'Scayt,HiddenField,CopyFormatting,About',
                             entities_latin: false,
-                            colorButton_colors: 'ff0000',
+                            colorButton_colors: 'ff0000,0000ff',
                             enterMode: 2,
                             // pasteFromWordPromptCleanup: true,
                             // pasteFromWordRemoveFontStyles: true,
@@ -381,9 +262,6 @@ function Convert2Page() {
                         <div>Ctrl + d: Xóa dấu br đầu dòng - Clean Text</div>
                         <div>Ctrl + q: Thêm 1 dòng nữa sau xuống dòng</div>
                         <div>Ctrl + x: Select text copy</div>
-                        {/* <div>
-                            Ctrl + 2: Đóng ngoặc in đậm ===> ... (abc ) ... => ...<strong>(abc)</strong>...{' '}
-                        </div> */}
                     </div>
                     {/* <textarea className='text' value={data}></textarea> */}
                 </div>
@@ -438,12 +316,10 @@ function Convert2Page() {
                             __html: dataConvert,
                         }}
                     ></div>
-
-                    {/* <textarea className='text' value={data}></textarea> */}
                 </div>
             </div>
         </div>
     );
 }
 
-export default Convert2Page;
+export default Editor1Page;
