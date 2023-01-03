@@ -41,6 +41,8 @@ function Editor1Page() {
                 `[style="color:#000000"],
         [style="color:#242021"],
         [style="color:#222222"],
+        [style="color:black"],
+        [style="color:#0d0d0d"],
         [style="background-color:#ffffff"],
         [style="background-color:#ffffff"]
         `
